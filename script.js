@@ -1,62 +1,48 @@
-/* =========================================
-   IKESPATTS STUDIO — Shared JavaScript
-   ========================================= */
+/* ============================================
+   IKESPATTS STUDIO — script.js
+   ============================================ */
 
-/* ---- CUSTOM CURSOR ---- */
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX;
-  my = e.clientY;
-});
-
-(function loop() {
-  cursor.style.left = mx + 'px';
-  cursor.style.top  = my + 'px';
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
-  requestAnimationFrame(loop);
-})();
-
-document.querySelectorAll('a, button, .project-card').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
-    ring.style.transform   = 'translate(-50%,-50%) scale(1.5)';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.transform = 'translate(-50%,-50%) scale(1)';
-    ring.style.transform   = 'translate(-50%,-50%) scale(1)';
-  });
-});
-
-/* ---- STICKY NAV (homepage only) ---- */
-const navbar = document.getElementById('navbar');
-if (navbar) {
+/* ---- STICKY NAVBAR ---- */
+const navbar = document.getElementById('navbar') || document.querySelector('.navbar');
+if (navbar && !navbar.classList.contains('always')) {
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
+  }, { passive: true });
 }
 
+/* ---- MOBILE MENU ---- */
+const navToggle = document.getElementById('navToggle');
+const navDrawer = document.getElementById('navDrawer');
+const navClose  = document.getElementById('navClose');
+
+function openDrawer() {
+  if (navDrawer) navDrawer.classList.add('open');
+}
+function closeDrawer() {
+  if (navDrawer) navDrawer.classList.remove('open');
+}
+
+if (navToggle) navToggle.addEventListener('click', openDrawer);
+if (navClose)  navClose.addEventListener('click', closeDrawer);
+
 /* ---- SCROLL REVEAL ---- */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08 });
+const revealEls = document.querySelectorAll('.reveal');
+if (revealEls.length) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => obs.observe(el));
+}
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-/* ---- PROJECT FILTER (projects page only) ---- */
+/* ---- PROJECT FILTER (projects page) ---- */
 const filterBtns = document.querySelectorAll('.filter-btn');
 if (filterBtns.length) {
-  const cards = document.querySelectorAll('.projects-grid-full .project-card');
+  const cards = document.querySelectorAll('.projects-grid .proj-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -65,7 +51,14 @@ if (filterBtns.length) {
 
       const filter = btn.dataset.filter;
       cards.forEach(card => {
-        card.style.display = (filter === 'all' || card.dataset.platform === filter) ? '' : 'none';
+        const show = filter === 'all' || card.dataset.platform === filter;
+        card.style.display = show ? '' : 'none';
+        // Restore wide span when showing all
+        if (show && filter === 'all' && card.classList.contains('wide')) {
+          card.style.gridColumn = '';
+        } else if (show && filter !== 'all') {
+          card.style.gridColumn = ''; // remove wide span when filtered
+        }
       });
     });
   });
