@@ -332,6 +332,50 @@ h3 {
 
   color: var(--muted);
 }
+/* ---- STATS ---- */
+.stats-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 3rem var(--pad-x);
+  background: var(--dark);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stat-num {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: rgba(250,247,242,0.5);
+  line-height: 1.5;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 600px) {
+  .stats-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
 /* ---- MARQUEE ---- */
 .marquee-wrap {
   background: var(--dark);
@@ -353,7 +397,84 @@ h3 {
 .marquee-dot {
   color: var(--gold);
 }
+/* ---- SKILLS ---- */
+.skills-section {
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
 
+.skills-header {
+  max-width: 580px;
+  margin: 0 auto 3rem;
+}
+
+.skills-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--dark);
+  margin-bottom: 0.75rem;
+}
+
+.skills-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.25rem;
+}
+
+.skill-card {
+  background: var(--cream-dark);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.skill-card:hover {
+  border-color: rgba(184,144,62,0.4);
+  box-shadow: 0 4px 20px rgba(184,144,62,0.1);
+  transform: translateY(-4px);
+}
+
+.skill-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.skill-percent {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.skill-name {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .skills-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 580px) {
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+}
 /* ---- ABOUT ---- */
 .about-section {
   display: grid;
@@ -433,14 +554,18 @@ font-size:1.4rem ;
 }
 
 .view-all {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
+  background: var(--dark);
+  border: none;
+  border-radius: 20px;
+  padding: 0.4rem 0.95rem;
   font-weight: 500;
   color: var(--gold);
   text-decoration: none;
   transition: color 0.2s;
 }
 .view-all:hover {
-  color: var(--dark);
+  color: var(--white);
 }
 
 /* Project cards grid */
@@ -452,7 +577,7 @@ font-size:1.4rem ;
 
 .proj-card {
   background: var(--white);
-  border: 5px solid var(--border);
+  border: 3px solid var(--border);
   overflow: hidden;
   transition:
     border-color 0.2s,
@@ -470,7 +595,7 @@ font-size:1.4rem ;
 /* Responsive image wrapper — fixed aspect ratio */
 .proj-img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  /* aspect-ratio: 16 / 10; */
   background: var(--cream-dark);
   overflow: hidden;
   display: flex;
@@ -510,7 +635,9 @@ font-size:1.4rem ;
 }
 
 .proj-num {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
   letter-spacing: 0.18em;
   color: var(--muted);
 }
@@ -525,9 +652,8 @@ font-size:1.4rem ;
 }
 
 .proj-title {
-  font-family: "Cormorant Garamond", serif;
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--dark);
   margin-bottom: 0.6rem;
   line-height: 1.2;
