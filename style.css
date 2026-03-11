@@ -190,6 +190,8 @@ h3 {
 
 .nav-links a {
   font-size: 1.2rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
   color: var(--muted);
   text-decoration: none;
   transition: color 0.2s;
@@ -204,6 +206,7 @@ h3 {
   font-weight: 500;
   color: var(--white);
   background: var(--dark);
+  border-radius: 20px;
   padding: 0.55rem 1.3rem;
   text-decoration: none;
   transition: background 0.2s;
@@ -318,15 +321,17 @@ h3 {
 }
 .hero-platforms strong {
   font-size: 0.62rem;
+    font-family: "Space Grotesk", sans-serif;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
 }
 .hero-platforms span {
   font-size: 0.75rem;
+    font-family: "Space Grotesk", sans-serif;
+
   color: var(--muted);
 }
-
 /* ---- MARQUEE ---- */
 .marquee-wrap {
   background: var(--dark);
@@ -361,7 +366,8 @@ h3 {
 }
 
 .about-text {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
+  font-family: "Roboto", sans-serif;
   color: var(--muted);
   font-weight: 300;
   line-height: 1.85;
@@ -391,14 +397,18 @@ h3 {
 .platform-row:hover .p-name {
   color: var(--gold);
 }
-
+.eyebrow{
+    font-family: "Space Grotesk", sans-serif;
+font-size:1.4rem ;
+}
 .p-name {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.35rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.3rem;
   transition: color 0.2s;
 }
 .p-type {
-  font-size: 0.7rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.9rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
@@ -442,7 +452,7 @@ h3 {
 
 .proj-card {
   background: var(--white);
-  border: 1px solid var(--border);
+  border: 5px solid var(--border);
   overflow: hidden;
   transition:
     border-color 0.2s,
@@ -452,7 +462,11 @@ h3 {
   border-color: rgba(184, 144, 62, 0.45);
   box-shadow: 0 4px 20px rgba(184, 144, 62, 0.1);
 }
-
+.proj-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
 /* Responsive image wrapper — fixed aspect ratio */
 .proj-img {
   width: 100%;
@@ -462,15 +476,16 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid var(--border);
+  /* border-bottom: 1px solid var(--border); */
 }
 
 .proj-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: center;
   display: block;
+  vertical-align: bottom; /* removes inline gap under img */
   transition: transform 0.4s ease;
 }
 .proj-card:hover .proj-img img {
