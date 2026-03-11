@@ -146,21 +146,20 @@ h3 {
 /* ---- NAVBAR ---- */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 200;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem var(--pad-x);
-  transition:
-    background 0.3s,
-    border-color 0.3s,
-    padding 0.3s;
+  transition: background 0.3s, border-color 0.3s, padding 0.3s;
   border-bottom: 1px solid transparent;
 }
-
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
 .navbar.scrolled,
 .navbar.always {
   background: rgba(250, 247, 242, 0.97);
@@ -184,15 +183,15 @@ h3 {
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   list-style: none;
 }
 
 .nav-links a {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: "Sora", sans-serif;
-  font-weight: 600;
-  color: var(--muted);
+  font-weight: 400;
+  color: #b88f3e;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -237,11 +236,11 @@ h3 {
 
 /* Mobile nav drawer */
 .nav-drawer {
-    display: none;
+  display: none;
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: var(--cream);
-  z-index: 190;
+  z-index: 300;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -252,8 +251,8 @@ h3 {
 }
 .nav-drawer a {
   font-family: "Sora", sans-serif;
-    font-weight: 500;
-  font-size: 1.8rem;
+  font-weight: 500;
+  font-size: 1.4rem;
   color: var(--dark);
   text-decoration: none;
 }
@@ -261,18 +260,30 @@ h3 {
   color: var(--gold);
 }
 .nav-drawer-close {
-  position: absolute;
+   position: absolute;
   top: 1.5rem;
   right: var(--pad-x);
+  width: 42px;
+  height: 42px;
   background: none;
   border: none;
-  font-size: 1.8rem;
-  color: var(--dark);
-  line-height: 1;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 10;
 }
-
+.nav-drawer-close span {
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: var(--dark);
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.nav-drawer-close span:first-child { transform: rotate(45deg); }
+.nav-drawer-close span:last-child  { transform: rotate(-45deg); }
+.nav-drawer-close:hover span { background: var(--gold); }
 /* ---- HERO ---- */
 .hero {
   min-height: 60svh;
@@ -309,7 +320,9 @@ h3 {
   flex-wrap: wrap;
   gap: 0.75rem;
 }
-
+.hero-btns a{
+  font-size: 1rem;
+}
 .hero-platforms {
   position: absolute;
   right: var(--pad-x);
@@ -956,16 +969,20 @@ h3 {
 
 /* Tablet — 2-col cards */
 @media (max-width: 960px) {
-  .nav-links,
+   section[id],
+  div[id] {
+    scroll-margin-top: 70px;
+  }
+  .nav-links{
+    display:none;
+  }
   .nav-cta {
-    display: none;
+    display: flex;
   }
   .nav-toggle {
     display: flex;
   }
-  /* .hero{
-  margin-top: -300px;
-} */
+ 
   .hero-platforms {
     display: none;
   }
