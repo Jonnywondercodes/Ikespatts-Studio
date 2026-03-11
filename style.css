@@ -485,7 +485,6 @@ font-size:1.4rem ;
   object-fit: cover;
   object-position: center;
   display: block;
-  vertical-align: bottom; /* removes inline gap under img */
   transition: transform 0.4s ease;
 }
 .proj-card:hover .proj-img img {
