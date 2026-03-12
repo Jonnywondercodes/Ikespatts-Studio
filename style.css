@@ -972,10 +972,10 @@ h3 {
 
 /* Tablet — 2-col cards */
 @media (max-width: 960px) {
-   /* section[id],
+   section[id],
   div[id] {
-    scroll-margin-top: 70px;
-  } */
+    scroll-margin-top: 50px;
+  }
   .nav-links{
     display:none;
   }
