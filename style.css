@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Roboto", sans-serif;
   background: var(--cream);
   color: var(--dark);
   overflow-x: hidden;
@@ -388,6 +388,9 @@ h3 {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
+  #custom-div{
+    display: none;
+  }
 }
 /* ---- MARQUEE ---- */
 .marquee-wrap {
@@ -430,7 +433,7 @@ h3 {
 }
 
 .skills-sub {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--muted);
   line-height: 1.8;
   font-weight: 300;
@@ -489,13 +492,13 @@ h3 {
 /* Responsive */
 @media (max-width: 960px) {
   .skills-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (max-width: 580px) {
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 /* ---- ABOUT ---- */
