@@ -211,7 +211,7 @@ h3 {
   color: var(--white);
   background: var(--dark);
   border-radius: 20px;
-  padding: 0.55rem 1.3rem;
+  padding: 0.45rem 1.2rem;
   text-decoration: none;
   transition: background 0.2s;
   white-space: nowrap;
@@ -508,6 +508,8 @@ h3 {
   .skills-grid {
     grid-template-columns: repeat(4, 1fr);
   }
+
+
 }
 
 @media (max-width: 580px) {
@@ -842,7 +844,7 @@ h3 {
 }
 /* ---- CONTACT ---- */
 .contact-section {
-  padding: var(--pad-y) var(--pad-x);
+  padding: var(--pad-y);
   background: var(--dark);
   border-top: 1px solid var(--border);
   text-align: center;
@@ -864,79 +866,102 @@ h3 {
 }
 
 .contact-sub {
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: rgba(250, 247, 242, 0.45);
   margin-bottom: 2rem;
-  font-weight: 300;
+  font-weight: 400;
 }
-
-.contact-btns {
+.contact-icons {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 1.25rem;
 }
 
+.contact-icon-btn{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.fiverr-logo, .outlook{
+   width: 50px;
+  height: 50px;
+}
+.contact-icon-btn:hover {
+  transform: translateY(-3px);
+}
+.contact-icon-btn i{
+  color: #fff;
+  font-size: 40px;
+}
 /* ---- FOOTER ---- */
 .site-footer {
   background: var(--dark);
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  padding: 1.5rem var(--pad-x);
+  padding: 3rem var(--pad-x) 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.footer-top {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 1.5rem;
 }
 
 .footer-logo {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--cream);
+  margin-bottom: 0.6rem;
 }
-.footer-logo span {
-  color: var(--gold);
+.footer-logo span { color: var(--gold); }
+
+.footer-tagline {
+  font-size: 1rem;
+  color: rgba(250,247,242,0.35);
+  line-height: 1.7;
+  font-weight: 400;
 }
 
-.footer-copy {
-  font-size: 0.7rem;
-  color: rgba(250, 247, 242, 0.28);
-}
-
-.footer-icons {
+.footer-nav {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  align-items: flex-start;
 }
 
-.f-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.07);
-  color: rgba(250, 247, 242, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-.f-icon:hover {
-  background: var(--gold);
-  color: var(--dark);
-}
-
-.f-link {
-  font-size: 0.7rem;
-  color: rgba(250, 247, 242, 0.3);
+.footer-nav a {
+  font-size: 0.82rem;
+  color: rgba(250,247,242,0.45);
   text-decoration: none;
   transition: color 0.2s;
 }
-.f-link:hover {
-  color: var(--gold);
+.footer-nav a:hover { color: var(--gold); }
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.7rem;
+  color: rgba(250,247,242,0.2);
+}
+
+/* Responsive */
+@media (max-width: 580px) {
+  .footer-top {
+    flex-direction: column;
+  }
+  .footer-nav {
+    gap: 0.5rem 1.5rem;
+  }
 }
 
 /* ---- PROJECTS PAGE ---- */
@@ -1104,12 +1129,8 @@ h3 {
 .anim-4 {
   opacity: 0;
   animation: fadeUp 0.7s 0.55s forwards;
-}
-
-/* ================================================
-   RESPONSIVE BREAKPOINTS
-   ================================================ */
-
+} 
+/* Responsive */
 /* Tablet — 2-col cards */
 @media (max-width: 960px) {
   section[id],
@@ -1189,12 +1210,17 @@ h3 {
     align-items: flex-start;
   }
 
-  .contact-btns {
+  /* .contact-btns {
     flex-direction: column;
     align-items: center;
-  }
+  } */
 
   .filter-bar {
     padding: 0 1.25rem;
+  }
+}
+@media (min-width: 1800px) {
+  .hero{
+    min-height: 50svh;  
   }
 }
